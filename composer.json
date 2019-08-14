@@ -1,5 +1,5 @@
 {
-  "name": "divisions/nette-propel2-extension",
+  "name": "burrak/nette-propel2-extension",
   "type": "library",
   "description": "Propel 2 extension for Nette framework",
   "homepage": "https://github.com/divisions-cz/nette-propel2-extension",
