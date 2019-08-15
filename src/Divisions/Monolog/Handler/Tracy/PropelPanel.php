@@ -113,7 +113,7 @@ class PropelPanel
 	/**
 	 * @return NormalizerFormatter
 	 */
-	protected function getDefaultFormatter(){
+	protected function getDefaultFormatter(): Monolog\Formatter\FormatterInterface{
 		return new NormalizerFormatter();
 	}
 
