@@ -56,7 +56,7 @@ class PropelPanel
 	/**
 	 * @return string
 	 */
-	public function getTab(){
+	public function getTab(): string {
 		return '<span title="Propel | Channel: '.htmlSpecialChars($this->channelName, ENT_QUOTES, 'UTF-8').'">
 		<svg viewBox="0 0 2048 2048"><path fill="'.($this->queries ? '#469ED6' : '#A0B2BE').'" d="M1024 896q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zm0 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zm0-384q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zm0-1152q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"/><span class="tracy-label">'.($this->totalTime ? sprintf('%0.1f ms | ',
 		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 $this->totalTime) : '').$this->profiledQueriesCounter.' / '.$this->unprofiledQueriesCounter.'</span></span>';
@@ -65,7 +65,7 @@ class PropelPanel
 	/**
 	 * @return string
 	 */
-	public function getPanel(){
+	public function getPanel(): string {
 		$output = '';
 
 		foreach($this->queries AS $record){
@@ -99,7 +99,7 @@ class PropelPanel
 	/**
 	 * @param array $record
 	 */
-	public function write(array $record){
+	public function write(array $record): void {
 		$this->logQuery($record);
 	}
 
