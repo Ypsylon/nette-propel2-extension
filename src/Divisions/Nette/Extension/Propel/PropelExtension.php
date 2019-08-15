@@ -69,7 +69,7 @@ class Propel2Extension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('container'))
-		        ->setClass('Propel\Runtime\ServiceContainer\StandardServiceContainer')
+		        ->setType('Propel\Runtime\ServiceContainer\StandardServiceContainer')
 		        ->setFactory('Propel\Runtime\Propel::getServiceContainer');
 
 		$this->registerAdapters($parsedConfig['adapters']);
@@ -141,7 +141,7 @@ class Propel2Extension
 		$container = $builder->getDefinition($this->prefix('container'));
 		foreach($adapters AS $name => $adapter){
 			$builder->addDefinition($this->prefix($name.'.adapter'))
-			        ->setClass('Propel\Runtime\Adapter\AdapterInterface')
+			        ->setType('Propel\Runtime\Adapter\AdapterInterface')
 			        ->setFactory('Propel\Runtime\Adapter\AdapterFactory::create', [$adapter]);
 		}
 		$container->addSetup('setAdapterClasses', [$adapters]);
@@ -156,7 +156,7 @@ class Propel2Extension
 		$container = $builder->getDefinition($this->prefix('container'));
 		foreach($connections AS $name => $connection){
 			$conn = $builder->addDefinition($this->prefix($name.'.connection'))
-			                ->setClass('Propel\Runtime\Connection\ConnectionInterface')
+			                ->setType('Propel\Runtime\Connection\ConnectionInterface')
 			                ->setFactory('Propel\Runtime\Connection\ConnectionFactory::create',
 			                             [$connection, $this->prefix('@'.$name.'.adapter')]);
 
@@ -178,11 +178,11 @@ class Propel2Extension
 		foreach($loggers AS $name => $values){
 			$handlerRegistrationData = $this->getHandlerRegistrationData($name, $values);
 			$handler                 = $builder->addDefinition($this->prefix($name.'.logger.handler'));
-			$handler->setClass($handlerRegistrationData['handlerClass'], $handlerRegistrationData['constructorValues']);
+			$handler->setType($handlerRegistrationData['handlerClass'], $handlerRegistrationData['constructorValues']);
 			$handler->addSetup('setChannelName', [$name]);
 
 			$builder->addDefinition($this->prefix($name.'.logger'))
-			        ->setClass('Monolog\Logger', [$name])
+			        ->setType('Monolog\Logger', [$name])
 			        ->addSetup('pushHandler', [$this->prefix('@'.$name.'.logger.handler')]);
 
 
