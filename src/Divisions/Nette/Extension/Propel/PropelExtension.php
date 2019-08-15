@@ -182,7 +182,7 @@ class Propel2Extension
 			$handler->addSetup('setChannelName', [$name]);
 
 			$builder->addDefinition($this->prefix($name.'.logger'))
-			        ->setFactory('Division\Monolog\LoggerFactory', [$name])
+			        ->setFactory('Monolog\Logger', [$name])
 			        ->addSetup('pushHandler', [$this->prefix('@'.$name.'.logger.handler')]);
 
 
