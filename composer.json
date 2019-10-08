@@ -1,5 +1,5 @@
 {
-  "name": "burrak/nette-propel2-extension",
+  "name": "ypsylon/nette-propel2-extension",
   "repositories": [
     {
       "type": "vcs",
