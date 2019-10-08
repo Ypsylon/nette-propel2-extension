@@ -1,5 +1,11 @@
 {
   "name": "burrak/nette-propel2-extension",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Ypsylon/Propel2.git"
+    }
+  ],
   "type": "library",
   "description": "Propel 2 extension for Nette framework",
   "homepage": "https://github.com/divisions-cz/nette-propel2-extension",
@@ -20,7 +26,7 @@
   ],
   "require": {
     "php": ">= 5.4.0",
-    "propel/propel": "~2.0.0@dev",
+    "ypsylon/propel": "dev-master",
     "monolog/monolog": "^2.0"
   },
   "autoload": {
